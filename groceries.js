@@ -1,38 +1,53 @@
+var myList = [];
+
 function addItem()
 {
   var input;
   input = document.getElementById("newItem").value;
-  var list;
-  list = document.getElementById("listDisplay");
-  var item;
-  item = document.createElement("li");
+  var index = myList.indexOf(input);
+  if(index == -1)
+  {
+     myList.push(input);
+  }
 
-  var btnClose;
-  btnClose = document.createElement("BUTTON");
-  btnClose.classList.add("btn");
-  btnClose.classList.add("btn-danger");
-  btnClose.classList.add("btn-xs");
-  var iconClose;
-  iconClose = document.createElement("SPAN");
-  iconClose.classList.add("glyphicon");
-  iconClose.classList.add("glyphicon-remove");
-  btnClose.appendChild(iconClose);
+     console.log(myList);
 
-  btnClose.addEventListener("click", removeParentListItem);
+     var list;
+     list = document.getElementById("listDisplay");
+     var item;
+     item = document.createElement("li");
 
-  var itemName;
-  itemName = document.createTextNode(input);
-  item.appendChild(itemName);
-  item.appendChild(btnClose);
-  list.appendChild(item);
-  document.getElementById("newItem").value = "";
+     var btnClose;
+     btnClose = document.createElement("BUTTON");
+     btnClose.classList.add("btn");
+     btnClose.classList.add("btn-danger");
+     btnClose.classList.add("btn-xs");
+     var iconClose;
+     iconClose = document.createElement("SPAN");
+     iconClose.classList.add("glyphicon");
+     iconClose.classList.add("glyphicon-remove");
+     btnClose.appendChild(iconClose);
+
+     btnClose.addEventListener("click", removeParentListItem);
+
+     var itemName;
+     itemName = document.createTextNode(input);
+     item.appendChild(itemName);
+     item.appendChild(btnClose);
+     list.appendChild(item);
+     document.getElementById("newItem").value = "";
 }
 
 function removeParentListItem()
 {
   var mom = this.parentNode;
+  var itemRemove = mom.firstChild.textContect;
+  var itemIndex = myList.itemRemove;
+    myList.splice(itemIndex,1);
   var grandma = mom.parentNode;
   grandma.removeChild(mom);
+
+  console.log(myList);
 }
 
 //courtesy of w3schools, from: http://www.w3schools.com/js/js_cookies.asp
